@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #41A3FE;
+}
+.card .front-view img{
+    width: 40px;
+}
+
+.card .back-view img{
+    max-width: 80px;
+}
+@media(max-width:767px){
+    .card .back-view img{
+        max-width: 60px;
+    }
+}
+.container{
+    height: 500px;
+    width: 500px;
+    background: linear-gradient(to right, #2C8FCB, #86E0FA);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 10px;
+}
+@media(max-width:767px){
+    .container{
+        height: 400px;
+        width: 87%;
+    }
+}
+.cards,
+.card,
+.view{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cards{
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cards .card{
+    height: calc(100% / 4 - 10px);
+    width: calc(100% / 4 - 10px);
+    cursor: pointer;
+    position: relative;
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+.cards .card .view{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.616);
+    position: absolute;
+    transition: transform .25s linear;
+    backface-visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+.card .front-view span{
+    font-size: 40px;
+    color: #6563ff;
+}
+.card .back-view{
+    /* display: none; */
+
+    transform: rotateY(-180deg);
+}
+
+/* .card:hover .back-view{
+    transform: rotateY(0);
+}
+.card:hover .front-view{
+    transform: rotateY(180deg);
+} js 3*/
+
+
+/*JS 3*/
+.card.flip .back-view{
+    transform: rotateY(0);
+}
+.card.flip .front-view{
+    transform: rotateY(180deg);
+}
+/*JS 7.2*/
+.card.shake{
+    animation: shake 0.35s ease-in-out;
+}
+@keyframes shake {
+    0%, 100%{
+        transform: translateX(0);
+    }
+    20%{
+        transform: translateX(-13px);
+    }
+    40%{
+        transform: translateX(13px);
+    }
+    60%{
+        transform: translateX(-8px);
+    }
+    80%{
+        transform: translateX(8px);
+    }
+}
+#congratsMessage {
+    display: none;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 60px;
+    animation: vibrate 0.3s linear infinite; /* Adding vibration animation */
+}
+
+/* Vibration Keyframes */
+@keyframes vibrate {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    50% {
+        transform: translateX(2px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+}
